@@ -1,7 +1,7 @@
 {
   "name": "github-fetcher-fullstack-v2",
   "version": "1.0.0",
-  "description": "",
+  "description": "This is a project I completed as a student at [hackreactor](http://hackreactor.com). This project was worked on with a pair.",
   "main": "index.js",
   "scripts": {
     "react-dev": "webpack -d --watch",
@@ -18,12 +18,22 @@
   },
   "dependencies": {
     "angular": "^1.6.3",
-    "body-parser": "^1.17.2",
-    "express": "^4.15.0",
+    "body-parser": "^1.18.3",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
     "jquery": "^3.1.1",
-    "mongoose": "^4.8.6",
+    "mongojs": "^2.6.0",
+    "mongoose": "^4.13.17",
     "mysql": "^2.13.0",
     "react": "^15.4.2",
     "react-dom": "^15.4.2"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YazeedHammad/mvp-starter.git"
+  },
+  "bugs": {
+    "url": "https://github.com/YazeedHammad/mvp-starter/issues"
+  },
+  "homepage": "https://github.com/YazeedHammad/mvp-starter#readme"
 }

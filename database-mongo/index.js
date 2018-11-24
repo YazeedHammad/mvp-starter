@@ -12,11 +12,21 @@ db.once('open', function() {
 });
 
 var itemSchema = mongoose.Schema({
-  quantity: Number,
-  description: String
+  foodName: String,
+  price: Number
 });
 
 var Item = mongoose.model('Item', itemSchema);
+
+var save = (data) => {
+  var item = new Item(data);
+  item.save(function(err) {
+    if(err){
+      console.log(err);
+    }
+    console.log("Thanks For Your Suggestions")
+  });
+}
 
 var selectAll = function(callback) {
   Item.find({}, function(err, items) {
