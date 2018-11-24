@@ -1,6 +1,8 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/test');
+//mongoose.connect('mongodb://localhost/test');
+mongoose.connect('yazeed:yazeed92@ds041167.mlab.com:41167/food_menu');
 
+//mongodb://<dbuser>:<dbpassword>@ds041167.mlab.com:41167/food_menu
 var db = mongoose.connection;
 
 db.on('error', function() {
@@ -38,4 +40,5 @@ var selectAll = function(callback) {
   });
 };
 
+module.exports.save = save;
 module.exports.selectAll = selectAll;
