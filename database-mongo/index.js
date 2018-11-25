@@ -14,19 +14,21 @@ db.once('open', function() {
 });
 
 var itemSchema = mongoose.Schema({
-  foodName: String,
-  price: Number
+  foodName: {type : String, unique : true},
+  price: {type : Number, unique : false}
 });
 
 var Item = mongoose.model('Item', itemSchema);
 
-var save = (data) => {
-  var item = new Item(data);
-  item.save(function(err) {
+var save = (data, callback) => {
+  // var item = new Item({foodName: foodName, price: price});
+  Item.collection.insert(function(err, data) {
     if(err){
-      console.log(err);
+      callback(err, null);
+    } else {
+      callback(null, data);
+      console.log("Thanks For Your Suggestions" + data);
     }
-    console.log("Thanks For Your Suggestions")
   });
 }
 

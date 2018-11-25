@@ -14,6 +14,18 @@ class App extends React.Component {
   componentDidMount() {
     $.ajax({
       url: '/items',
+      type: 'POST',
+      success: (data) => {
+        this.setState({items: data})
+        console.log(data)
+      },
+      error: (err) => {
+        console.log('err', err);
+      }
+    });
+    $.ajax({
+      url: '/items',
+      type: 'GET',
       success: (data) => {
         this.setState({items: data})
         console.log(data)

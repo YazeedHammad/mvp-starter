@@ -3,8 +3,16 @@
 <head>
   <title>Food Menu</title>
 </head>
-<body>
+<body background="food.jpg">
 <div id="app"></div>
+
 <script type="text/javascript" src="bundle.js"></script>
+<form method='POST' action='/items'>
+	<input type="text" />
+	<input type='submit' value='Suggestions' />
+</form>
+<form method='GET' action='/items'>
+	<input type='submit' value='Show Menue' />
+</form>
 </body>
 </html>
