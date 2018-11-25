@@ -6,7 +6,8 @@ var items = require('../database-mongo/index.js');
 
 var app = express();
 app.use(bodyParser.json());
-
+app.use(bodyParser.json({ type: 'application/*+json' }))
+app.use(bodyParser.urlencoded({ extended: false }))
 // UNCOMMENT FOR REACT
 app.use(express.static(__dirname + '/../react-client/dist'));
 
@@ -15,7 +16,6 @@ app.use(express.static(__dirname + '/../react-client/dist'));
 // app.use(express.static(__dirname + '/../node_modules'));
 
 app.post('/items' , function(req, res) {
-	// var foodName = req.body.foodName;
   console.log('rb: ', req.body)
   items.save(req.body, function(err, data){
     res.send(data);

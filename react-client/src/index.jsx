@@ -8,15 +8,25 @@ class App extends React.Component {
     super(props);
     this.state = { 
       items: [],
-      foodName: '',
-      price: ''
+      foodName: '11111',
+      price: '22222'
     }
   }
 
-  componentDidMount() {
-    $.ajax({
+foodChange(event) {
+  this.setState({foodName: event.target.value});
+}
+
+priceChange(event) {
+  this.setState({price: event.target.value});
+}
+
+onSubmit(event) {
+  console.log("Yazeed:" ,this.state.foodName);
+      $.ajax({
       url: '/items',
       type: 'POST',
+      data:{foodName:this.state.foodName, price:this.state.price},
 
       success: (data) => {
         this.setState({items: data})
@@ -26,8 +36,10 @@ class App extends React.Component {
         console.log('err', err);
       }
     });
+}
 
-    $.ajax({
+showMenu(event) {
+      $.ajax({
       url: '/items',
       type: 'GET',
       success: (data) => {
@@ -38,30 +50,28 @@ class App extends React.Component {
         console.log('err', err);
       }
     });
-  }
-      // <form method='POST' action='/items'>
-      // <input type="text" />
-      // <input type='submit' value='Suggestions' />
-      // </form>
-      // <form method='GET' action='/items'>
-      // <input type='submit' value='Show Menue' />
-      // </form>
+}
+
+  // componentDidMount() {
+  // }
+   
 
   render () {
     return (<div>
-      <h1>Food Menu</h1>
+      <h1 id="title">Food Menu</h1>
       <List items={this.state.items}/><br></br>
-      <form>
+      <form onSubmit={this.onSubmit.bind(this)} id="form">
       <label>
       Food Name:
-      <input type="text" name="foodName" />
+      <input type="text" name="foodName" onChange={this.foodChange.bind(this)} />
       </label><br></br><br></br>
       <label>
       Price:
-      <input type="text" name="price" />
+      <input type="text" name="price" onChange={this.priceChange.bind(this)} />
       </label><br></br><br></br>
-      <input type="submit" value="Suggestions" />
       </form>
+      <button id="sug" onClick={this.onSubmit.bind(this)}> Suggestions </button>
+      <button id="show" onClick={this.showMenu.bind(this)}> Show Menu </button>
       </div>)
   }
 }
