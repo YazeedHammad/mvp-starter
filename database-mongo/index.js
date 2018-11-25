@@ -21,8 +21,8 @@ var itemSchema = mongoose.Schema({
 var Item = mongoose.model('Item', itemSchema);
 
 var save = (data, callback) => {
-  // var item = new Item({foodName: foodName, price: price});
-  Item.collection.insert(function(err, data) {
+  var item = new Item({foodName: 'foodName321', price: 123});
+  item.save(function(err, data) {
     if(err){
       callback(err, null);
     } else {

@@ -15,7 +15,8 @@ app.use(express.static(__dirname + '/../react-client/dist'));
 // app.use(express.static(__dirname + '/../node_modules'));
 
 app.post('/items' , function(req, res) {
-	var foodName = req.body.foodName;
+	// var foodName = req.body.foodName;
+  console.log('rb: ', req.body)
   items.save(req.body, function(err, data){
     res.send(data);
   })
@@ -32,7 +33,7 @@ app.get('/items', function (req, res) {
   });
 });
 
-var port = process.env.PORT || 3000;
+var port = process.env.PORT || 3010;
 
 app.listen(port, function() {
   console.log(`listening on port ${port}`);
